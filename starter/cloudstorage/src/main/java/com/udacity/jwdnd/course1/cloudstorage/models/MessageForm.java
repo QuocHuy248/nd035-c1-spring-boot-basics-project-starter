@@ -5,10 +5,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@Data
-@NoArgsConstructor
-@Builder
 public class MessageForm {
     private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public MessageForm(String message) {
+        this.message = message;
+    }
+
+    public MessageForm() {
+    }
 }
