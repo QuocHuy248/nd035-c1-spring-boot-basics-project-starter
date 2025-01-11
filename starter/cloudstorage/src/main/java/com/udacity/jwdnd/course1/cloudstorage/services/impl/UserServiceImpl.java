@@ -12,10 +12,15 @@ import java.util.Base64;
 import java.util.Objects;
 
 @Service
-@RequiredArgsConstructor
+
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final HashService hashService;
+
+    public UserServiceImpl(UserMapper userMapper, HashService hashService) {
+        this.userMapper = userMapper;
+        this.hashService = hashService;
+    }
 
     @Override
     public User getUser(String username) {

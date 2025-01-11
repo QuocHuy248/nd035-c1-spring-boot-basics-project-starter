@@ -9,9 +9,13 @@ import com.udacity.jwdnd.course1.cloudstorage.services.CredentialService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class CredentialServiceImpl implements CredentialService {
     private final CredentialMapper credentialMapper;
+
+    public CredentialServiceImpl(CredentialMapper credentialMapper) {
+        this.credentialMapper = credentialMapper;
+    }
 
     @Override
     public Integer createCredential(Credential credential) {

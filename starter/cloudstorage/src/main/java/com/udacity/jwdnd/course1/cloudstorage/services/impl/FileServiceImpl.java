@@ -10,9 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class FileServiceImpl implements FileService {
     private final FileMapper fileMapper;
+
+    public FileServiceImpl(FileMapper fileMapper) {
+        this.fileMapper = fileMapper;
+    }
 
     @Override
     public boolean fileIsAvailable(String fileName, Integer userId) {

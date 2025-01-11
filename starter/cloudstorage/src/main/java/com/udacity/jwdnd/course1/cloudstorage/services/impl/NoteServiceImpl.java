@@ -9,9 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class NoteServiceImpl implements NoteService {
     private final NoteMapper noteMapper;
+
+    public NoteServiceImpl(NoteMapper noteMapper) {
+        this.noteMapper = noteMapper;
+    }
+
     @Override
     public Integer createNote(Note note) {
         return noteMapper.createNote(note);
