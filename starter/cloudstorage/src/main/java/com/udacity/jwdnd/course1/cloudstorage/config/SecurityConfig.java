@@ -11,9 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.context.annotation.Configuration;
 @EnableWebSecurity
 @Configuration
-@AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     private final AuthenticationService authenticationService;
+    public SecurityConfig(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationService);
