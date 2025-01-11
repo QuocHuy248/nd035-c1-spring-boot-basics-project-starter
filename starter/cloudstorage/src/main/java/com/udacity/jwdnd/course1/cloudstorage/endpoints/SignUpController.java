@@ -17,9 +17,13 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping(UriParam.SIGNUP)
-@RequiredArgsConstructor
 public class SignUpController {
     private final UserService UserService;
+
+    public SignUpController(UserService userService) {
+        UserService = userService;
+    }
+
     @GetMapping
     public String signupView(){
         return ConstUdacity.SIGNUP_VIEW;

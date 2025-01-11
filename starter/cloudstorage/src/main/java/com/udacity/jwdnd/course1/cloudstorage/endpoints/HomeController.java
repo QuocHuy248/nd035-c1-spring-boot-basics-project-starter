@@ -20,13 +20,21 @@ import java.util.Scanner;
 
 @Controller
 @RequestMapping(value = {UriParam.HOME})
-@RequiredArgsConstructor
 public class HomeController {
     private final UserService userService;
     private final FileService fileService;
     private final NoteService noteService;
     private final CredentialService credentialService;
     private final EncryptionService encryptionService;
+
+    public HomeController(UserService userService, FileService fileService, NoteService noteService, CredentialService credentialService, EncryptionService encryptionService) {
+        this.userService = userService;
+        this.fileService = fileService;
+        this.noteService = noteService;
+        this.credentialService = credentialService;
+        this.encryptionService = encryptionService;
+    }
+
     @GetMapping
     public String homeView(Authentication authentication, Model model,@ModelAttribute("file") File file, @ModelAttribute("note") Note note,@ModelAttribute("credential") Credential credential) {
         User user = userService.getUser(authentication.getName());

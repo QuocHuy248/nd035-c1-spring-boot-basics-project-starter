@@ -4,7 +4,6 @@ import com.udacity.jwdnd.course1.cloudstorage.models.File;
 import com.udacity.jwdnd.course1.cloudstorage.models.User;
 import com.udacity.jwdnd.course1.cloudstorage.services.FileService;
 import com.udacity.jwdnd.course1.cloudstorage.services.UserService;
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,11 +20,15 @@ import java.io.OutputStream;
 
 @Controller
 @RequestMapping("/files")
-@RequiredArgsConstructor
 public class FileController {
     private static final Logger log = LoggerFactory.getLogger(FileController.class);
     private final UserService userService;
     private final FileService fileService;
+
+    public FileController(UserService userService, FileService fileService) {
+        this.userService = userService;
+        this.fileService = fileService;
+    }
 
     @Value("${files.max-file-size}")
     private DataSize maximumFileSize;

@@ -11,10 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequiredArgsConstructor
 public class NoteController {
     private final NoteService noteService;
     private final UserService userService;
+
+    public NoteController(NoteService noteService, UserService userService) {
+        this.noteService = noteService;
+        this.userService = userService;
+    }
 
     @PostMapping("/notes")
     public String createOrUpdate(@ModelAttribute Note note, Model model, Authentication authentication) {
