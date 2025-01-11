@@ -13,10 +13,16 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 @Service
-@AllArgsConstructor
+
 public class AuthenticationService implements AuthenticationProvider {
     private final UserMapper userMapper;
     private final HashService hashService;
+
+    public AuthenticationService(UserMapper userMapper, HashService hashService) {
+        this.userMapper = userMapper;
+        this.hashService = hashService;
+    }
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
